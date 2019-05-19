@@ -1,21 +1,46 @@
 @import "../styles/defaults"
 @import "../styles/reset"
-.item
-  float: left
-  border: 3px $text-color solid
-  display: inline-block
+@import "../../node_modules/breakpoint-sass/stylesheets/_breakpoint"
 
-.item img
+.item
+  display: flex
+  align-items: center
+  width: 50%
+  margin-left: 50%
+  justify-content: center
+
+  @include breakpoint($medium)
+    &:nth-child(even)
+      flex-direction: row-reverse
+      margin-left: 0
+      margin-right: 0
+
+.item .content img
   width: 100%
 
 .itemTitle
-  margin: 0 auto
-  padding: 3em
+  margin: 3em auto
+  display: block
   text-align: center
   font-family: $font
 
-.container
-  float: left
-  overflow: hidden
+.content
+  border: 2px $text-color solid
+  flex-grow: 1
+
+
+  @include breakpoint(md)
+    width: 45%
+    flex-grow: 0
+
+
+.marker
+  // Use flex box if centering the marker doesn't work
+  height: 3em
+  width: 3em
+  flex-shrink: 0
+
+
+
 
 

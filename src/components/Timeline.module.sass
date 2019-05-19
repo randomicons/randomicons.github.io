@@ -1,10 +1,17 @@
 @import "../styles/defaults"
-.line
-  border-bottom: .5em solid $text-color
 
-.itemList
-  overflow: hidden
-  overflow-x: scroll
-  height: 25em
+.timeline
+  position: relative
+  margin: 0 auto
+  width: 90%
 
+  &::before
+    content: ''
+    position: absolute
+    top: 0
+    left: calc(50% - .25em)
+    height: 100%
+    width: .5em
+    background: aquamarine
+    z-index: -1
 
