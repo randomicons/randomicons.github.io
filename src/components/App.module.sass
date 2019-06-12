@@ -1,4 +1,13 @@
 @import "../styles/defaults"
+body, html
+  width: 100%
+  height: 100%
+
+*,
+*::after,
+*::before
+  box-sizing: border-box
+
 
 .face
   height: 10em
@@ -12,8 +21,11 @@ body
   position: relative
 
 main
-  height: 100vh
-
-.section_container
-  position: absolute
   width: 100%
+  height: 100%
+  position: relative
+  display: grid
+  grid-template-columns: 100%
+  grid-template-rows: 100%
+  align-items: center
+
