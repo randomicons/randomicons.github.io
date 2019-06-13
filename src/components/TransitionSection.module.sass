@@ -10,6 +10,8 @@
   grid-area: 1 / 1 / 2 / 2
   justify-self: center
   position: relative
+  will-change: transform
+  -webkit-filter: blur(0.000001px)
 
 .container
   position: absolute
@@ -37,7 +39,12 @@ h3
   color: #2f56f0
 
 .down
-  margin-top: 0%
+  position: absolute
+  color: indianred
+  bottom: 20em
+
+  &:hover
+    color: red
 
 .dot
   position: absolute

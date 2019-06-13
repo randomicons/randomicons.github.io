@@ -18,7 +18,6 @@ export default class TransitionSection extends Component {
           const rotation_div = node.childNodes[0]
           const move_div = rotation_div.childNodes[0]
           const contentDiv = move_div.childNodes[0]
-
           if (this.props.show && this.props.doInitAnim) {
             TweenMax.to(move_div, transSpeed, {startAt: {y: "100%"}, y: "0%", ease: Expo.easeInOut, onComplete: done})
           }
