@@ -4,6 +4,11 @@ import React, {Component} from 'react'
 import {library} from '@fortawesome/fontawesome-svg-core'
 import {faChevronDown} from '@fortawesome/free-solid-svg-icons'
 import TransitionSection from "./TransitionSection"
+import styles from "./App.module.sass"
+import dodgerush from "../images/dodgerush.png"
+import sometodo from "../images/sometodo.png"
+import walmart from "../images/walmart.png"
+
 
 library.add(faChevronDown)
 
@@ -18,22 +23,47 @@ class App extends Component {
     return this.state.page === pageNum
   }
 
+  incPage = () => {
+    this.setState({page: this.state.page + 1})
+  }
+
   render() {
+    let zIndex = 3
+    let pageNum = 0
     return (
       <main>
-        <TransitionSection background={"#d5ffff"} zIndex={2} show={this.checkPage(0)} arrowAction={
-          () => this.setState({page: this.state.page + 1})}
-        >
-          <div style={{background: "white"}}>
+        <TransitionSection background={"#f9f9f9"} doInitAnim zIndex={zIndex--} show={this.checkPage(pageNum++)}
+                           arrowAction={this.incPage}>
+          <div style={{background: "#f9f9f9"}}>
             <p>A bird in the hand is worth 2 in the bush</p>
             <h1>Sriram Bhat</h1>
           </div>
+          <div className={styles.line}></div>
         </TransitionSection>
-        <TransitionSection background={"#ffd5ff"} zIndex={1} show={this.checkPage(1)} arrowAction={
-          () => this.setState({page: this.state.page + 1})}>
-          <div style={{background: "white"}}>
-            <p>A bird in the hand is worth 2 in the bush</p>
-            <h1>Sriram Bhat</h1>
+        <TransitionSection background={"#f9f9f9"} doInitAnim zIndex={zIndex--} show={this.checkPage(pageNum++)}
+                           arrowAction={this.incPage}>
+          <div style={{background: "#f9f9f9", width: "50vw"}}>
+            <img src={dodgerush} style={{opacity: 1, width: "100%"}}/>
+            <div><p>I made this game. Called it (for the SEO mainly) <em>Dodgerush : Puzzle Tower Defense.</em></p>
+            </div>
+          </div>
+        </TransitionSection>
+        <TransitionSection background={"#f9f9f9"} zIndex={zIndex--} show={this.checkPage(pageNum++)}
+                           arrowAction={this.incPage}>
+          <div style={{background: "#f9f9f9", width: "50vw"}}>
+            <img src={sometodo} style={{opacity: 1, height: "70vh"}}/>
+            <div><p>All the todo apps had too little of what I wanted and too much of what I didn't want. So I made my
+              own.</p>
+            </div>
+          </div>
+        </TransitionSection>
+        <TransitionSection background={"#f9f9f9"} zIndex={zIndex++} show={this.checkPage(pageNum++)}
+                           arrowAction={this.incPage}>
+          <div style={{background: "#f9f9f9", width: "50vw"}}>
+            <img src={walmart} style={{opacity: 1, height: "70vh"}}/>
+            <div><p>All the todo apps had too little of what I wanted and too much of what I didn't want. So I made my
+              own.</p>
+            </div>
           </div>
         </TransitionSection>
         {/*{*/}
