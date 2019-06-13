@@ -28,7 +28,7 @@ class App extends Component {
   }
 
   render() {
-    let zIndex = 3
+    let zIndex = 4
     let pageNum = 0
     return (
       <main>
@@ -44,25 +44,28 @@ class App extends Component {
                            arrowAction={this.incPage}>
           <div style={{background: "#f9f9f9", width: "50vw"}}>
             <img src={dodgerush} style={{opacity: 1, width: "100%"}}/>
+            <h3>Dodgerush</h3>
             <div><p>I made this game. Called it (for the SEO mainly) <em>Dodgerush : Puzzle Tower Defense.</em></p>
+            </div>
+          </div>
+        </TransitionSection>
+        <TransitionSection background={"#f9f9f9"} doInitAnim zIndex={zIndex--} show={this.checkPage(pageNum++)}
+                           arrowAction={this.incPage}>
+          <div style={{background: "#f9f9f9", width: "50vw"}}>
+            <img src={sometodo} style={{opacity: 1, height: "70vh"}}/>
+            <h3>Some-Todo</h3>
+            <div><p>All the todo apps had too little of what I wanted and too much of what I didn't want. So I made my
+              own.</p>
             </div>
           </div>
         </TransitionSection>
         <TransitionSection background={"#f9f9f9"} zIndex={zIndex--} show={this.checkPage(pageNum++)}
                            arrowAction={this.incPage}>
           <div style={{background: "#f9f9f9", width: "50vw"}}>
-            <img src={sometodo} style={{opacity: 1, height: "70vh"}}/>
-            <div><p>All the todo apps had too little of what I wanted and too much of what I didn't want. So I made my
-              own.</p>
-            </div>
-          </div>
-        </TransitionSection>
-        <TransitionSection background={"#f9f9f9"} zIndex={zIndex++} show={this.checkPage(pageNum++)}
-                           arrowAction={this.incPage}>
-          <div style={{background: "#f9f9f9", width: "50vw"}}>
             <img src={walmart} style={{opacity: 1, height: "70vh"}}/>
-            <div><p>All the todo apps had too little of what I wanted and too much of what I didn't want. So I made my
-              own.</p>
+            <h3>Walmart Energy Forecasting</h3>
+            <div><p>Forecasted energy usage of Walmart Stores and created a UI to display and interact with the
+              models.</p>
             </div>
           </div>
         </TransitionSection>
