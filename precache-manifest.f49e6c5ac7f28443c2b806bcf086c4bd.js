@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "d21898b48224d3f63dc1",
-    "url": "/static/css/main.3de78f0b.chunk.css"
+    "revision": "e68f1b96663ea91e2b78",
+    "url": "/static/css/main.e0f351dd.chunk.css"
   },
   {
-    "revision": "d21898b48224d3f63dc1",
-    "url": "/static/js/main.4b6fcc50.chunk.js"
+    "revision": "e68f1b96663ea91e2b78",
+    "url": "/static/js/main.450ba1c1.chunk.js"
   },
   {
     "revision": "42ac5946195a7306e2a5",
@@ -28,7 +28,7 @@ self.__precacheManifest = [
     "url": "/static/media/walmart.ae3e0c92.png"
   },
   {
-    "revision": "b57ab051a228a5eab8a03ae921c7f7db",
+    "revision": "b83016e86dd3c4237d54b8031a96320c",
     "url": "/index.html"
   }
 ];
