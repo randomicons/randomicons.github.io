@@ -4,6 +4,7 @@ import {Expo, TweenMax} from "gsap"
 import styles from "./TransitionSection.module.sass"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import PropTypes from "prop-types"
+import {numPages} from './App'
 
 const transSpeed = 1
 const rotAngle = 35
@@ -42,10 +43,15 @@ export default class TransitionSection extends Component {
               backgroundPosition: "center"
             }}>
               <div className={styles.content}>
+                {this.props.zIndex !== numPages && <div className={styles.up}>
+                  <span><FontAwesomeIcon onClick={this.props.arrowAction(-1)} icon={"chevron-up"}/></span>
+                </div>}
                 {this.props.children}
-                <div className={styles.down}>
-                  <span><FontAwesomeIcon onClick={this.props.arrowAction} icon={"chevron-down"}/></span>
+                {this.props.zIndex !== 0 &&
+                < div className={styles.down}>
+                  <span><FontAwesomeIcon onClick={this.props.arrowAction(1)} icon={"chevron-down"}/></span>
                 </div>
+                }
               </div>
             </div>
           </div>

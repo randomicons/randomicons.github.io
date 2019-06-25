@@ -2,16 +2,18 @@
 import React, {Component} from 'react'
 
 import {library} from '@fortawesome/fontawesome-svg-core'
-import {faChevronDown} from '@fortawesome/free-solid-svg-icons'
+import {faChevronDown, faChevronUp} from '@fortawesome/free-solid-svg-icons'
 import TransitionSection from "./TransitionSection"
 import styles from "./App.module.sass"
 import dodgerush from "../images/dodgerush.png"
 import sometodo from "../images/sometodo.png"
 import walmart from "../images/walmart.png"
+import Nav from "./Nav"
 
 
-library.add(faChevronDown)
+library.add(faChevronDown, faChevronUp)
 
+export const numPages = 4
 
 class App extends Component {
   constructor(props) {
@@ -23,17 +25,24 @@ class App extends Component {
     return this.state.page === pageNum
   }
 
-  incPage = () => {
-    this.setState({page: this.state.page + 1})
+  changePage = (change) => {
+    return () => this.setState({page: this.state.page + change})
   }
 
+  toHome = () => this.setState({page: 0})
+
   render() {
-    let zIndex = 4
+    let zIndex = numPages
     let pageNum = 0
     return (
       <main>
+        <Nav links={[
+          {name: "Home", action: this.toHome},
+          {name: "adsf", action: this.toHome},
+          {name: "adsf", action: this.toHome},
+        ]}/>
         <TransitionSection background={"#f9f9f9"} doInitAnim zIndex={zIndex--} show={this.checkPage(pageNum++)}
-                           arrowAction={this.incPage}>
+                           arrowAction={this.changePage}>
           <div style={{background: "#f9f9f9"}}>
             <p>A bird in the hand is worth 2 in the bush</p>
             <h1>Sriram Bhat</h1>
@@ -41,7 +50,7 @@ class App extends Component {
           <div className={styles.line}></div>
         </TransitionSection>
         <TransitionSection background={"#f9f9f9"} doInitAnim zIndex={zIndex--} show={this.checkPage(pageNum++)}
-                           arrowAction={this.incPage}>
+                           arrowAction={this.changePage}>
           <div style={{background: "#f9f9f9", width: "50vw"}}>
             <h3>Dodgerush</h3>
             <img src={dodgerush} style={{opacity: 1, width: "100%"}}/>
@@ -50,7 +59,7 @@ class App extends Component {
           </div>
         </TransitionSection>
         <TransitionSection background={"#f9f9f9"} doInitAnim zIndex={zIndex--} show={this.checkPage(pageNum++)}
-                           arrowAction={this.incPage}>
+                           arrowAction={this.changePage}>
           <div style={{background: "#f9f9f9", width: "50vw"}}>
             <h3>Some-Todo</h3>
             <img src={sometodo} style={{opacity: 1, width: "100%"}}/>
@@ -60,7 +69,7 @@ class App extends Component {
           </div>
         </TransitionSection>
         <TransitionSection background={"#f9f9f9"} doInitAnim zIndex={zIndex--} show={this.checkPage(pageNum++)}
-                           arrowAction={this.incPage}>
+                           arrowAction={this.changePage}>
           <div style={{background: "#f9f9f9", width: "50vw"}}>
             <h3>Walmart Energy Forecasting</h3>
             <img src={walmart} style={{opacity: 1, height: "70vh"}}/>
@@ -69,16 +78,13 @@ class App extends Component {
             </div>
           </div>
         </TransitionSection>
-        {/*{*/}
-        {/*  <Transition*/}
-        {/*    show={this.checkPage(1)}*/}
-        {/*    appear mountOnEnter unmountOnExit*/}
-        {/*    onEnter={node => TweenMax.set(node, {y: "-100vh"})}*/}
-        {/*    onEntered={node => TweenMax.set(node, {y: "0vh"})}*/}
-        {/*  >*/}
-        {/*    <section style={{background: "#f00", height: "100vh"}}><p>Some nonsense</p></section>*/}
-        {/*  </Transition>*/}
-        {/*}*/}
+        <TransitionSection background={"#f9f9f9"} doInitAnim zIndex={zIndex--} show={this.checkPage(pageNum++)}
+                           arrowAction={this.changePage}>
+          <div style={{background: "#f9f9f9", width: "50vw"}}>
+            <h3>This website o_o!</h3>
+            <p>What a great website.</p>
+          </div>
+        </TransitionSection>
       </main>
     )
   }
