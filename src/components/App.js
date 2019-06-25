@@ -13,12 +13,12 @@ import Nav from "./Nav"
 
 library.add(faChevronDown, faChevronUp)
 
-export const numPages = 4
+export const numPages = 5
 
 class App extends Component {
   constructor(props) {
     super(props)
-    this.state = {page: 0}
+    this.state = {page: 1}
   }
 
   checkPage(pageNum) {
@@ -29,17 +29,18 @@ class App extends Component {
     return () => this.setState({page: this.state.page + change})
   }
 
-  toHome = () => this.setState({page: 0})
-
+  toHome = () => this.setState({page: 1})
+  toContact = () => this.setState({page: numPages + 1})
+  
   render() {
     let zIndex = numPages
-    let pageNum = 0
+    let pageNum = 1
     return (
       <main>
         <Nav links={[
           {name: "Home", action: this.toHome},
-          {name: "adsf", action: this.toHome},
-          {name: "adsf", action: this.toHome},
+          {name: "Contact", action: this.toContact},
+          {name: "Resume", action: this.toHome},
         ]}/>
         <TransitionSection background={"#f9f9f9"} doInitAnim zIndex={zIndex--} show={this.checkPage(pageNum++)}
                            arrowAction={this.changePage}>
@@ -83,6 +84,14 @@ class App extends Component {
           <div style={{background: "#f9f9f9", width: "50vw"}}>
             <h3>This website o_o!</h3>
             <p>What a great website.</p>
+          </div>
+        </TransitionSection>
+        <TransitionSection background={"#f9f9f9"} doInitAnim zIndex={zIndex--} show={this.checkPage(pageNum++)}
+                           arrowAction={this.changePage}>
+          <div style={{background: "#f9f9f9", width: "50vw"}}>
+            <h3>Contact</h3>
+            <p>email: srirambhat7@gmail.com</p>
+            <p>phone: 469-479-8177</p>
           </div>
         </TransitionSection>
       </main>

@@ -7,7 +7,7 @@ import PropTypes from "prop-types"
 import {numPages} from './App'
 
 const transSpeed = 1
-const rotAngle = 35
+const rotAngle = 45
 export default class TransitionSection extends Component {
 
   render() {
