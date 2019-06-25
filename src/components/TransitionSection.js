@@ -1,6 +1,6 @@
 import React, {Component} from "react"
 import {Transition} from "react-transition-group"
-import {Expo, TweenMax} from "gsap"
+import {Expo, TimelineLite, TweenMax} from "gsap"
 import styles from "./TransitionSection.module.sass"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import PropTypes from "prop-types"
@@ -20,13 +20,19 @@ export default class TransitionSection extends Component {
           const rotation_div = node.childNodes[0]
           const move_div = rotation_div.childNodes[0]
           const contentDiv = move_div.childNodes[0]
+          const enterAnim = new TimelineLite({onComplete: done})
+            .to(move_div, transSpeed, {startAt: {y: `${dir * 100}%`}, y: "0%", ease: Expo.easeInOut}, 0).pause()
+            .from(contentDiv.childNodes, transSpeed, {x: dir * 150}, 0)
+            .pause()
+
+          const leaveAnim = new TimelineLite({onComplete: done})
+            .to(contentDiv.childNodes, transSpeed, {x: dir * -150}, 0)
+            .to(move_div, transSpeed, {y: `${dir * -100}%`, ease: Expo.linear, onComplete: done,}, 0)
+            .to(contentDiv, transSpeed, {y: `${dir * 100}%`, ease: Expo.linear}, 0)
+            .pause()
+
           if (this.props.show && this.props.doInitAnim) {
-            TweenMax.to(move_div, transSpeed, {
-              startAt: {y: `${dir * 100}%`},
-              y: "0%",
-              ease: Expo.easeInOut,
-              onComplete: done
-            })
+            enterAnim.play()
           }
           if (this.props.show) {
             move_div.style.width = `calc(100vw * ${Math.abs(Math.cos(rotAngle * Math.PI / 180))} + 100vh * ${Math.abs(Math.sin(rotAngle * Math.PI / 180))})`
@@ -35,8 +41,7 @@ export default class TransitionSection extends Component {
             rotation_div.style.transform = `rotate3d(0,0,1,${rotAngle}deg)`
             TweenMax.set(contentDiv, {rotation: -1 * rotAngle})
           } else if (!this.props.show) {
-            TweenMax.to(move_div, transSpeed, {y: `${dir * -100}%`, ease: Expo.linear, onComplete: done,})
-            TweenMax.to(contentDiv, transSpeed, {y: `${dir * 100}%`, ease: Expo.linear})
+            leaveAnim.play()
           }
         }}
       >

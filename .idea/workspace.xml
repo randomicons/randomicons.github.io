@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b24e00f5-ae9e-4ba6-9508-c077614be7bd" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/components/Nav.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nav.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nav.module.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nav.module.sass" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/TransitionSection.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TransitionSection.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/TransitionSection.module.sass" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/TransitionSection.module.sass" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -41,8 +38,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/components/TransitionSection.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="510">
-                  <caret line="31" column="85" selection-start-line="30" selection-end-line="31" selection-end-column="86" />
+                <state relative-caret-position="612">
+                  <caret line="24" column="55" selection-start-line="24" selection-start-column="55" selection-end-line="24" selection-end-column="55" />
                   <folding>
                     <element signature="e#0#38#0" expanded="true" />
                   </folding>
@@ -297,7 +294,7 @@
       <workItem from="1560451606255" duration="17695000" />
       <workItem from="1560637821154" duration="2411000" />
       <workItem from="1561414634654" duration="11195000" />
-      <workItem from="1561443456752" duration="8220000" />
+      <workItem from="1561443456752" duration="9777000" />
     </task>
     <task id="LOCAL-00001" summary="Horizontal timeline working but incomplete">
       <created>1557775978514</created>
@@ -331,7 +328,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="173357000" />
+    <option name="totallyTimeSpent" value="174914000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-24" width="3840" height="2184" extended-state="6" />
@@ -342,7 +339,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32908288" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.068170674" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.068170674" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -352,6 +349,7 @@
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.07945071" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="11" weight="0.32957333" />
+      <window_info anchor="right" x="0" y="0" width="910" height="1984" id="Documentation" side_tool="true" weight="0.32994792" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -548,8 +546,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/components/TransitionSection.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="31" column="85" selection-start-line="30" selection-end-line="31" selection-end-column="86" />
+        <state relative-caret-position="612">
+          <caret line="24" column="55" selection-start-line="24" selection-start-column="55" selection-end-line="24" selection-end-column="55" />
           <folding>
             <element signature="e#0#38#0" expanded="true" />
           </folding>
