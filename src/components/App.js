@@ -18,7 +18,7 @@ export const numPages = 5
 class App extends Component {
   constructor(props) {
     super(props)
-    this.state = {page: 1}
+    this.state = {page: 0}
   }
 
   checkPage(pageNum) {
@@ -29,13 +29,45 @@ class App extends Component {
     return () => this.setState({page: this.state.page + change, dir: Math.sign(change)})
   }
 
-  toHome = () => this.setState({page: 1})
-  toContact = () => this.setState({page: numPages + 1})
+  toHome = () => this.setState({page: 0})
+  toContact = () => this.setState({page: numPages})
 
   render() {
     let zIndex = numPages
-    let pageNum = 1
     const dir = this.state.dir
+    const info = [
+      {
+        title: "Dodgerush",
+        img: dodgerush,
+        p: <p>I made this game. Called it (for the SEO mainly) <em>Dodgerush : Puzzle Tower Defense.</em></p>
+      },
+      {
+        title: "Some-Todo",
+        img: sometodo,
+        p: <p>All the todo apps had too little of what I wanted and too much of what I didn't want. So I made my
+          own.</p>,
+      },
+      {
+        title: "Walmart Energy Forecasting",
+        img: walmart,
+        p: <p>Forecasted energy usage of Walmart Stores and created a UI to display and interact with the
+          models.</p>,
+      },
+      {
+        title: "This website o_o!",
+        img: null,
+        p: <p>What a great website.</p>,
+      }
+    ].map((content, i) =>
+      <TransitionSection background={"#f9f9f9"} dir={dir} doInitAnim zIndex={numPages - i - 1}
+                         show={this.checkPage(i + 1)}
+                         arrowAction={this.changePage}>
+        <div style={{background: "#f9f9f9", width: '60vw'}}>
+          <h2>{content.title}</h2>
+          <img src={content.img} style={{width: "100%"}}/>
+          <p>{content.p}</p>
+        </div>
+      </TransitionSection>)
     return (
       <main>
         <Nav links={[
@@ -43,8 +75,8 @@ class App extends Component {
           {name: "Contact", action: this.toContact},
           {name: "Resume", action: this.toHome},
         ]}/>
-        <TransitionSection background={"#f9f9f9"} dir={dir} doInitAnim zIndex={zIndex--}
-                           show={this.checkPage(pageNum++)}
+        <TransitionSection background={"#f9f9f9"} dir={dir} doInitAnim zIndex={numPages}
+                           show={this.checkPage(0)}
                            arrowAction={this.changePage}>
           <div style={{background: "#f9f9f9"}}>
             <p>A bird in the hand is worth 2 in the bush</p>
@@ -52,49 +84,9 @@ class App extends Component {
           </div>
           <div className={styles.line}></div>
         </TransitionSection>
-        <TransitionSection background={"#f9f9f9"} dir={dir} direction={this.state.changeDirection} doInitAnim
-                           zIndex={zIndex--}
-                           show={this.checkPage(pageNum++)}
-                           arrowAction={this.changePage}>
-          <div style={{background: "#f9f9f9", width: "50vw"}}>
-            <h3>Dodgerush</h3>
-            <img src={dodgerush} style={{opacity: 1, width: "100%"}}/>
-            <div><p>I made this game. Called it (for the SEO mainly) <em>Dodgerush : Puzzle Tower Defense.</em></p>
-            </div>
-          </div>
-        </TransitionSection>
-        <TransitionSection background={"#f9f9f9"} dir={dir} doInitAnim zIndex={zIndex--}
-                           show={this.checkPage(pageNum++)}
-                           arrowAction={this.changePage}>
-          <div style={{background: "#f9f9f9", width: "50vw"}}>
-            <h3>Some-Todo</h3>
-            <img src={sometodo} style={{opacity: 1, width: "100%"}}/>
-            <div><p>All the todo apps had too little of what I wanted and too much of what I didn't want. So I made my
-              own.</p>
-            </div>
-          </div>
-        </TransitionSection>
-        <TransitionSection background={"#f9f9f9"} dir={dir} doInitAnim zIndex={zIndex--}
-                           show={this.checkPage(pageNum++)}
-                           arrowAction={this.changePage}>
-          <div style={{background: "#f9f9f9", width: "50vw"}}>
-            <h3>Walmart Energy Forecasting</h3>
-            <img src={walmart} style={{opacity: 1, height: "70vh"}}/>
-            <div><p>Forecasted energy usage of Walmart Stores and created a UI to display and interact with the
-              models.</p>
-            </div>
-          </div>
-        </TransitionSection>
-        <TransitionSection background={"#f9f9f9"} dir={dir} doInitAnim zIndex={zIndex--}
-                           show={this.checkPage(pageNum++)}
-                           arrowAction={this.changePage}>
-          <div style={{background: "#f9f9f9", width: "50vw"}}>
-            <h3>This website o_o!</h3>
-            <p>What a great website.</p>
-          </div>
-        </TransitionSection>
-        <TransitionSection background={"#f9f9f9"} dir={dir} doInitAnim zIndex={zIndex--}
-                           show={this.checkPage(pageNum++)}
+        {info}
+        <TransitionSection background={"#f9f9f9"} dir={dir} doInitAnim zIndex={0}
+                           show={this.checkPage(numPages)}
                            arrowAction={this.changePage}>
           <div style={{background: "#f9f9f9", width: "50vw"}}>
             <h3>Contact</h3>

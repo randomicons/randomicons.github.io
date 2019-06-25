@@ -1,8 +1,30 @@
-
 $text-color: #1e1e1e
 
 $font: 'calling-code', monospace
 $font-size: 1.5rem
+$font-size-small: 1rem
 //media queries sizes
+$tablet-width: 768px
+$desktop-width: 1024px
 
 $medium: 40em
+
+@mixin for-phone-only
+  @media (max-width: 599px)
+    @content
+
+@mixin for-tablet-portrait-up
+  @media (min-width: 600px)
+    @content
+
+@mixin for-tablet-landscape-up
+  @media (min-width: 900px)
+    @content
+
+@mixin for-desktop-up
+  @media (min-width: 1200px)
+    @content
+
+@mixin for-big-desktop-up
+  @media (min-width: 1800px)
+    @content
