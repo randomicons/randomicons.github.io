@@ -8,10 +8,8 @@ export default class Nav extends Component {
     const effect = (e) => {
       const elem = e.target
       const tolerance = 5
-
       const left = 0
       const right = elem.clientWidth
-
       let rect = e.target.getBoundingClientRect()
       let x = e.clientX - rect.left
       if (x - tolerance < left) x = left
