@@ -11,6 +11,7 @@ const rotAngle = 45
 export default class TransitionSection extends Component {
 
   render() {
+    const dir = this.props.dir
     return (
       <Transition
         in={this.props.show}
@@ -20,7 +21,12 @@ export default class TransitionSection extends Component {
           const move_div = rotation_div.childNodes[0]
           const contentDiv = move_div.childNodes[0]
           if (this.props.show && this.props.doInitAnim) {
-            TweenMax.to(move_div, transSpeed, {startAt: {y: "100%"}, y: "0%", ease: Expo.easeInOut, onComplete: done})
+            TweenMax.to(move_div, transSpeed, {
+              startAt: {y: `${dir * 100}%`},
+              y: "0%",
+              ease: Expo.easeInOut,
+              onComplete: done
+            })
           }
           if (this.props.show) {
             move_div.style.width = `calc(100vw * ${Math.abs(Math.cos(rotAngle * Math.PI / 180))} + 100vh * ${Math.abs(Math.sin(rotAngle * Math.PI / 180))})`
@@ -29,8 +35,8 @@ export default class TransitionSection extends Component {
             rotation_div.style.transform = `rotate3d(0,0,1,${rotAngle}deg)`
             TweenMax.set(contentDiv, {rotation: -1 * rotAngle})
           } else if (!this.props.show) {
-            TweenMax.to(move_div, transSpeed, {y: "-100%", ease: Expo.linear, onComplete: done,})
-            TweenMax.to(contentDiv, transSpeed, {y: "100%", ease: Expo.linear})
+            TweenMax.to(move_div, transSpeed, {y: `${dir * -100}%`, ease: Expo.linear, onComplete: done,})
+            TweenMax.to(contentDiv, transSpeed, {y: `${dir * 100}%`, ease: Expo.linear})
           }
         }}
       >
@@ -65,5 +71,6 @@ TransitionSection.propTypes = {
   show: PropTypes.bool.isRequired,
   background: PropTypes.string.isRequired,
   arrowAction: PropTypes.func.isRequired,
-  doInitAnim: PropTypes.bool
+  doInitAnim: PropTypes.bool,
+  dir: PropTypes.number.isRequired
 }

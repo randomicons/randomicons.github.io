@@ -26,15 +26,16 @@ class App extends Component {
   }
 
   changePage = (change) => {
-    return () => this.setState({page: this.state.page + change})
+    return () => this.setState({page: this.state.page + change, dir: Math.sign(change)})
   }
 
   toHome = () => this.setState({page: 1})
   toContact = () => this.setState({page: numPages + 1})
-  
+
   render() {
     let zIndex = numPages
     let pageNum = 1
+    const dir = this.state.dir
     return (
       <main>
         <Nav links={[
@@ -42,7 +43,8 @@ class App extends Component {
           {name: "Contact", action: this.toContact},
           {name: "Resume", action: this.toHome},
         ]}/>
-        <TransitionSection background={"#f9f9f9"} doInitAnim zIndex={zIndex--} show={this.checkPage(pageNum++)}
+        <TransitionSection background={"#f9f9f9"} dir={dir} doInitAnim zIndex={zIndex--}
+                           show={this.checkPage(pageNum++)}
                            arrowAction={this.changePage}>
           <div style={{background: "#f9f9f9"}}>
             <p>A bird in the hand is worth 2 in the bush</p>
@@ -50,7 +52,9 @@ class App extends Component {
           </div>
           <div className={styles.line}></div>
         </TransitionSection>
-        <TransitionSection background={"#f9f9f9"} doInitAnim zIndex={zIndex--} show={this.checkPage(pageNum++)}
+        <TransitionSection background={"#f9f9f9"} dir={dir} direction={this.state.changeDirection} doInitAnim
+                           zIndex={zIndex--}
+                           show={this.checkPage(pageNum++)}
                            arrowAction={this.changePage}>
           <div style={{background: "#f9f9f9", width: "50vw"}}>
             <h3>Dodgerush</h3>
@@ -59,7 +63,8 @@ class App extends Component {
             </div>
           </div>
         </TransitionSection>
-        <TransitionSection background={"#f9f9f9"} doInitAnim zIndex={zIndex--} show={this.checkPage(pageNum++)}
+        <TransitionSection background={"#f9f9f9"} dir={dir} doInitAnim zIndex={zIndex--}
+                           show={this.checkPage(pageNum++)}
                            arrowAction={this.changePage}>
           <div style={{background: "#f9f9f9", width: "50vw"}}>
             <h3>Some-Todo</h3>
@@ -69,7 +74,8 @@ class App extends Component {
             </div>
           </div>
         </TransitionSection>
-        <TransitionSection background={"#f9f9f9"} doInitAnim zIndex={zIndex--} show={this.checkPage(pageNum++)}
+        <TransitionSection background={"#f9f9f9"} dir={dir} doInitAnim zIndex={zIndex--}
+                           show={this.checkPage(pageNum++)}
                            arrowAction={this.changePage}>
           <div style={{background: "#f9f9f9", width: "50vw"}}>
             <h3>Walmart Energy Forecasting</h3>
@@ -79,14 +85,16 @@ class App extends Component {
             </div>
           </div>
         </TransitionSection>
-        <TransitionSection background={"#f9f9f9"} doInitAnim zIndex={zIndex--} show={this.checkPage(pageNum++)}
+        <TransitionSection background={"#f9f9f9"} dir={dir} doInitAnim zIndex={zIndex--}
+                           show={this.checkPage(pageNum++)}
                            arrowAction={this.changePage}>
           <div style={{background: "#f9f9f9", width: "50vw"}}>
             <h3>This website o_o!</h3>
             <p>What a great website.</p>
           </div>
         </TransitionSection>
-        <TransitionSection background={"#f9f9f9"} doInitAnim zIndex={zIndex--} show={this.checkPage(pageNum++)}
+        <TransitionSection background={"#f9f9f9"} dir={dir} doInitAnim zIndex={zIndex--}
+                           show={this.checkPage(pageNum++)}
                            arrowAction={this.changePage}>
           <div style={{background: "#f9f9f9", width: "50vw"}}>
             <h3>Contact</h3>
