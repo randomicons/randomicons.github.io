@@ -59,8 +59,19 @@ class App extends Component {
     return () => this.setState({page: this.state.page + change, dir: Math.sign(change)})
   }
 
-  toHome = () => this.setState({page: 0})
-  toContact = () => this.setState({page: numPages})
+  toHome = () => {
+    this.setState({page: 0, dir: -1})
+    if (this.state.noAnim)
+      document.getElementById('home').scrollIntoView({behavior: "smooth"})
+  }
+  toContact = () => {
+    this.setState({page: numPages, dir: 1})
+    if (this.state.noAnim)
+      document.getElementById('contact').scrollIntoView({behavior: "smooth"})
+  }
+  toResume = () => {
+    window.location = 'https://docs.google.com/document/d/1LmQIE1kGwN_K5hh8aJbSTbbrUpppgVB156wl7xRTiQ4/edit?usp=sharing'
+  }
 
   render() {
     const dir = this.state.dir
@@ -94,7 +105,7 @@ class App extends Component {
                          arrowAction={this.changePage}>
         {home}
       </TransitionSection>
-    home = <div className={styles.container}>{home}</div>
+    home = <div id="home" className={styles.container}>{home}</div>
     let contact = [
       <div className={styles.line}></div>,
       <section>
@@ -109,7 +120,7 @@ class App extends Component {
                          arrowAction={this.changePage}>
         {contact}
       </TransitionSection>
-    contact = <div className={styles.container}>{contact}</div>
+    contact = <div id="contact" className={styles.container}>{contact}</div>
     let displayedContent
     if (this.state.noAnim) {
       displayedContent = [home, infoNoAnim, contact]
@@ -122,7 +133,7 @@ class App extends Component {
         <Nav links={[
           {name: "Home", action: this.toHome},
           {name: "Contact", action: this.toContact},
-          {name: "Resume", action: this.toHome},
+          {name: "Resume", action: this.toResume},
         ]}/>
         <label className={styles.animToggle}>
           <span>Animation</span>
