@@ -39,13 +39,16 @@ class App extends Component {
       {
         title: "Dodgerush",
         img: dodgerush,
-        p: <p>I made this game. Called it (for the SEO mainly) <em>Dodgerush : Puzzle Tower Defense.</em></p>
+        p: <p>I made this game. Called it (for the SEO mainly) <em>Dodgerush : Puzzle Tower Defense.</em></p>,
+        link: "https://play.google.com/store/apps/details?id=com.dodge.rush"
       },
       {
         title: "Some-Todo",
         img: sometodo,
         p: <p>All the todo apps had too little of what I wanted and too much of what I didn't want. So I made my
           own.</p>,
+        link: "https://sometodo.herokuapp.com/",
+        github: "https://github.com/randomicons/something-todo"
       },
       {
         title: "Walmart Energy Forecasting",
@@ -57,16 +60,21 @@ class App extends Component {
         title: "This website o_o!",
         img: null,
         p: <p>What a great website.</p>,
+        github: "https://github.com/randomicons/randomicons.github.io"
       }
     ].map((content, i) =>
       <TransitionSection background={"#f9f9f9"} dir={dir} doInitAnim zIndex={numPages - i - 1}
                          show={this.checkPage(i + 1)}
                          arrowAction={this.changePage}>
-        <div style={{background: "#f9f9f9", width: '60vw'}}>
+        <section style={{background: content.background != null ? content.background : "#f9f9f9"}}>
           <h2>{content.title}</h2>
-          <img src={content.img} style={{width: "100%"}}/>
-          <p>{content.p}</p>
-        </div>
+          <a href={content.link}><img src={content.img} style={{width: "100%"}}/></a>
+          {content.p}
+          <p>
+            {content.link && <a href={content.link}>View</a>}
+            {content.github && <a href={content.github}>Github</a>}
+          </p>
+        </section>
       </TransitionSection>)
     return (
       <main>
@@ -88,10 +96,10 @@ class App extends Component {
         <TransitionSection background={"#f9f9f9"} dir={dir} doInitAnim zIndex={0}
                            show={this.checkPage(numPages)}
                            arrowAction={this.changePage}>
-          <div style={{background: "#f9f9f9", width: "50vw"}}>
+          <div style={{background: "#f9f9f9"}}>
             <h3>Contact</h3>
-            <p>email: srirambhat7@gmail.com</p>
-            <p>phone: 469-479-8177</p>
+            <p>email: srirambhat7@gmail.com <br/>phone: 469-479-8177</p>
+            <p><a href={"https://github.com/randomicons"}>My Github</a></p>
           </div>
         </TransitionSection>
       </main>
