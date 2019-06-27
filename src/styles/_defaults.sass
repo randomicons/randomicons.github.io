@@ -1,10 +1,12 @@
 $text-color: #1e1e1e
-$text-color-light: #828282
+$text-color-light: #4f4f4f
+$blue: #73D2DE
 $purple: #6D435A
 //$primary: #ff5252
-$primary: #D81159
-//$secondary: #ECCE6C
+$red: #D81159
+$yellow: #ECCE6C
 $secondary: #218380
+$primary: $blue
 
 $font: 'calling-code', monospace
 $font-size: 1.5rem
@@ -14,6 +16,12 @@ $tablet-width: 768px
 $desktop-width: 1024px
 
 $medium: 40em
+
+a
+  color: $secondary
+
+  &:visited
+    color: $secondary
 
 @mixin for-phone-only
   @media (max-width: 599px)

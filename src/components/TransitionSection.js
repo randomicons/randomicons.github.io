@@ -22,11 +22,11 @@ export default class TransitionSection extends Component {
           const contentDiv = move_div.childNodes[0]
           const enterAnim = new TimelineLite({onComplete: done})
             .to(move_div, transSpeed, {startAt: {y: `${dir * 100}%`}, y: "0%", ease: Expo.easeInOut}, 0).pause()
-            .from(contentDiv.childNodes, transSpeed, {x: dir * 150}, 0)
+            .from(contentDiv.childNodes, transSpeed, {y: dir * -0}, 0)
             .pause()
 
           const leaveAnim = new TimelineLite({onComplete: done})
-            .to(contentDiv.childNodes, transSpeed, {x: dir * -150}, 0)
+            .to(contentDiv.childNodes, transSpeed, {y: dir * 0}, 0)
             .to(move_div, transSpeed, {y: `${dir * -100}%`, ease: Expo.linear, onComplete: done,}, 0)
             .to(contentDiv, transSpeed, {y: `${dir * 100}%`, ease: Expo.linear}, 0)
             .pause()

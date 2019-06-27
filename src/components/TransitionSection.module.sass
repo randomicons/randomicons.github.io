@@ -30,12 +30,13 @@
   will-change: transform
 
   & > div
-    display: flex
-    flex-direction: column
-    align-items: center
 
   & > section
     text-align: center
+    display: flex
+    flex-direction: column
+    align-items: center
+    justify-content: center
     width: 60vw
     @include for-phone-only
       width: 90vw
@@ -45,6 +46,7 @@
 
   h2
     color: $text-color
+
   h1
     color: $secondary
 
@@ -52,11 +54,11 @@
   position: absolute
   color: $text-color-light
   cursor: pointer
-  font-size: 1.8rem
+  font-size: 2rem
   z-index: 999
   transition: color .3s ease-in
 
-  &:hover > *
+  &:hover
     color: $secondary
 
 .down

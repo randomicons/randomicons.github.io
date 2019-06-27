@@ -18,7 +18,7 @@ export const numPages = 5
 class App extends Component {
   constructor(props) {
     super(props)
-    this.state = {page: 0}
+    this.state = {page: 0, noAnim: true}
   }
 
   checkPage(pageNum) {
@@ -33,7 +33,6 @@ class App extends Component {
   toContact = () => this.setState({page: numPages})
 
   render() {
-    let zIndex = numPages
     const dir = this.state.dir
     const info = [
       {
@@ -62,20 +61,60 @@ class App extends Component {
         p: <p>What a great website.</p>,
         github: "https://github.com/randomicons/randomicons.github.io"
       }
-    ].map((content, i) =>
+    ]
+    let infoNoAnim = info.map((content) =>
+      <section>
+        <h2>{content.title}</h2>
+        <img src={content.img} style={{width: "100%"}}/>
+        {content.p}
+        <p>
+          {content.link && <a href={content.link}>View</a>}
+          {content.github && <a href={content.github}>Github</a>}
+        </p>
+      </section>)
+    const infoAnim = infoNoAnim.map((content, i) =>
       <TransitionSection background={"#f9f9f9"} dir={dir} doInitAnim zIndex={numPages - i - 1}
                          show={this.checkPage(i + 1)}
                          arrowAction={this.changePage}>
-        <section style={{background: content.background != null ? content.background : "#f9f9f9"}}>
-          <h2>{content.title}</h2>
-          <img src={content.img} style={{width: "100%"}}/>
-          {content.p}
-          <p>
-            {content.link && <a href={content.link}>View</a>}
-            {content.github && <a href={content.github}>Github</a>}
-          </p>
-        </section>
+        {content}
       </TransitionSection>)
+    infoNoAnim = infoNoAnim.map((content) => <div className={styles.container}>{content}</div>)
+    let home = [
+      <section style={{background: "#f9f9f9"}}>
+        <p>A bird in the hand is worth 2 in the bush</p>
+        <h1>Sriram Bhat</h1>
+      </section>,
+      <div className={styles.line}></div>
+    ]
+    const homeAnim =
+      <TransitionSection background={"#f9f9f9"} dir={dir} doInitAnim zIndex={numPages}
+                         show={this.checkPage(0)}
+                         arrowAction={this.changePage}>
+        {home}
+      </TransitionSection>
+    home = <div className={styles.container}>{home}</div>
+    let contact = [
+      <div className={styles.line}></div>,
+      <section>
+        <h2>Contact</h2>
+        <p>email: srirambhat7@gmail.com <br/>phone: 469-579-8177</p>
+        <p><a href={"https://github.com/randomicons"}>My Github</a></p>
+      </section>
+    ]
+    const contactAnim =
+      <TransitionSection background={"#f9f9f9"} dir={dir} doInitAnim zIndex={0}
+                         show={this.checkPage(numPages)}
+                         arrowAction={this.changePage}>
+        {contact}
+      </TransitionSection>
+    contact = <div className={styles.container}>{contact}</div>
+    let displayedContent
+    if (this.state.noAnim) {
+      displayedContent = [home, infoNoAnim, contact]
+    } else {
+      displayedContent = [homeAnim, infoAnim, contactAnim]
+    }
+
     return (
       <main>
         <Nav links={[
@@ -83,25 +122,7 @@ class App extends Component {
           {name: "Contact", action: this.toContact},
           {name: "Resume", action: this.toHome},
         ]}/>
-        <TransitionSection background={"#f9f9f9"} dir={dir} doInitAnim zIndex={numPages}
-                           show={this.checkPage(0)}
-                           arrowAction={this.changePage}>
-          <div style={{background: "#f9f9f9"}}>
-            <p>A bird in the hand is worth 2 in the bush</p>
-            <h1>Sriram Bhat</h1>
-          </div>
-          <div className={styles.line}></div>
-        </TransitionSection>
-        {info}
-        <TransitionSection background={"#f9f9f9"} dir={dir} doInitAnim zIndex={0}
-                           show={this.checkPage(numPages)}
-                           arrowAction={this.changePage}>
-          <div style={{background: "#f9f9f9"}}>
-            <h3>Contact</h3>
-            <p>email: srirambhat7@gmail.com <br/>phone: 469-479-8177</p>
-            <p><a href={"https://github.com/randomicons"}>My Github</a></p>
-          </div>
-        </TransitionSection>
+        {displayedContent}
       </main>
     )
   }
