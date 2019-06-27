@@ -68,7 +68,7 @@ class App extends Component {
                          arrowAction={this.changePage}>
         <section style={{background: content.background != null ? content.background : "#f9f9f9"}}>
           <h2>{content.title}</h2>
-          <a href={content.link}><img src={content.img} style={{width: "100%"}}/></a>
+          <img src={content.img} style={{width: "100%"}}/>
           {content.p}
           <p>
             {content.link && <a href={content.link}>View</a>}
