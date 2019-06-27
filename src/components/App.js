@@ -9,11 +9,41 @@ import dodgerush from "../images/dodgerush.png"
 import sometodo from "../images/sometodo.png"
 import walmart from "../images/walmart.png"
 import Nav from "./Nav"
+import Switch from "react-switch"
 
 
 library.add(faChevronDown, faChevronUp)
 
 export const numPages = 5
+
+const info = [
+  {
+    title: "Dodgerush",
+    img: dodgerush,
+    p: <p>I made this game. Called it (for the SEO mainly) <em>Dodgerush : Puzzle Tower Defense.</em></p>,
+    link: "https://play.google.com/store/apps/details?id=com.dodge.rush"
+  },
+  {
+    title: "Some-Todo",
+    img: sometodo,
+    p: <p>All the todo apps had too little of what I wanted and too much of what I didn't want. So I made my
+      own.</p>,
+    link: "https://sometodo.herokuapp.com/",
+    github: "https://github.com/randomicons/something-todo"
+  },
+  {
+    title: "Walmart Energy Forecasting",
+    img: walmart,
+    p: <p>Forecasted energy usage of Walmart Stores and created a UI to display and interact with the
+      models.</p>,
+  },
+  {
+    title: "This website o_o!",
+    img: null,
+    p: <p>What a great website.</p>,
+    github: "https://github.com/randomicons/randomicons.github.io"
+  }
+]
 
 class App extends Component {
   constructor(props) {
@@ -34,34 +64,6 @@ class App extends Component {
 
   render() {
     const dir = this.state.dir
-    const info = [
-      {
-        title: "Dodgerush",
-        img: dodgerush,
-        p: <p>I made this game. Called it (for the SEO mainly) <em>Dodgerush : Puzzle Tower Defense.</em></p>,
-        link: "https://play.google.com/store/apps/details?id=com.dodge.rush"
-      },
-      {
-        title: "Some-Todo",
-        img: sometodo,
-        p: <p>All the todo apps had too little of what I wanted and too much of what I didn't want. So I made my
-          own.</p>,
-        link: "https://sometodo.herokuapp.com/",
-        github: "https://github.com/randomicons/something-todo"
-      },
-      {
-        title: "Walmart Energy Forecasting",
-        img: walmart,
-        p: <p>Forecasted energy usage of Walmart Stores and created a UI to display and interact with the
-          models.</p>,
-      },
-      {
-        title: "This website o_o!",
-        img: null,
-        p: <p>What a great website.</p>,
-        github: "https://github.com/randomicons/randomicons.github.io"
-      }
-    ]
     let infoNoAnim = info.map((content) =>
       <section>
         <h2>{content.title}</h2>
@@ -122,6 +124,10 @@ class App extends Component {
           {name: "Contact", action: this.toContact},
           {name: "Resume", action: this.toHome},
         ]}/>
+        <label className={styles.animToggle}>
+          <span>Animation</span>
+          <Switch onChange={(checked) => this.setState({noAnim: !checked})} checked={!this.state.noAnim}/>
+        </label>
         {displayedContent}
       </main>
     )

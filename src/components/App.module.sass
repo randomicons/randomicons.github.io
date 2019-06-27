@@ -17,6 +17,28 @@ body, html
   position: absolute
   top: 65%
 
+.animToggle
+  position: absolute
+  display: flex
+  flex-direction: row
+  z-index: 999
+  right: 0
+  margin: 6% 5%
+  background: none
+  border: 0
+  font-family: $font
+  transition: color .3s ease
+  color: $text-color-light
+  cursor: pointer
+
+  & > *
+    margin: .2em
+
+  @include for-phone-only
+    right: 0
+    left: 0
+    margin: 15% 0 0 0
+
 .face
   height: 10em
   margin: 0 auto
@@ -47,13 +69,13 @@ main
   justify-content: center
   position: relative
 
-  &:nth-child(even)
+  &:nth-child(odd)
     background: #f9f9f9
 
     & > section
       background: #f9f9f9
 
-  &:nth-child(odd)
+  &:nth-child(even)
     background: #a3cfde
 
     & > section
