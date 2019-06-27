@@ -48,7 +48,7 @@ const info = [
 class App extends Component {
   constructor(props) {
     super(props)
-    this.state = {page: 0, noAnim: true}
+    this.state = {page: 0, noAnim: false}
   }
 
   checkPage(pageNum) {
@@ -126,7 +126,8 @@ class App extends Component {
         ]}/>
         <label className={styles.animToggle}>
           <span>Animation</span>
-          <Switch onChange={(checked) => this.setState({noAnim: !checked})} checked={!this.state.noAnim}/>
+          <Switch onChange={(checked) => this.setState({noAnim: !checked})} className={styles.toggle}
+                  checked={!this.state.noAnim}/>
         </label>
         {displayedContent}
       </main>
