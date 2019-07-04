@@ -6,7 +6,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import PropTypes from "prop-types"
 import {numPages} from './App'
 
-const transSpeed = 1
+const transSpeed = .7
 const rotAngle = 45
 export default class TransitionSection extends Component {
 

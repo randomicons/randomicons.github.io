@@ -5,9 +5,10 @@ import {library} from '@fortawesome/fontawesome-svg-core'
 import {faChevronDown, faChevronUp} from '@fortawesome/free-solid-svg-icons'
 import TransitionSection from "./TransitionSection"
 import styles from "./App.module.sass"
-import dodgerush from "../images/dodgerush.png"
+import dodgerush from "../images/dodgerush2.png"
 import sometodo from "../images/sometodo.png"
 import walmart from "../images/walmart.png"
+import worktime from "../images/worktime-pred.png"
 import Nav from "./Nav"
 import Switch from "react-switch"
 
@@ -36,6 +37,12 @@ const info = [
     img: walmart,
     p: <p>Forecasted energy usage of Walmart Stores and created a UI to display and interact with the
       models.</p>,
+  },
+  {
+    title: "Work Time Predictions",
+    img: worktime,
+    p: <p>I predicted my future productivity using my past pomodoro logs and machine learning.</p>,
+    github: "https://github.com/randomicons/worktime-prediction"
   },
   {
     title: "This website o_o!",
@@ -94,9 +101,11 @@ class App extends Component {
     infoNoAnim = infoNoAnim.map((content) => <div className={styles.container}>{content}</div>)
     let home = [
       <section style={{background: "#f9f9f9"}}>
-        <p>A bird in the hand is worth 2 in the bush</p>
+        {/*<p>A bird in the hand is worth 2 in the bush</p>*/}
         <h1>Sriram Bhat</h1>
       </section>,
+      <p style={{textAlign: "center"}}>I develop. I know data science. What more could you ask for.<br/>Look at some of
+        my projects.</p>,
       <div className={styles.line}></div>
     ]
     const homeAnim =
