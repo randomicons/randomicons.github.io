@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "9f883de7d1108adfcacc",
-    "url": "/static/css/main.73ccebe9.chunk.css"
+    "revision": "bafb12c061631fb0d375",
+    "url": "/static/css/main.d4c883a8.chunk.css"
   },
   {
-    "revision": "9f883de7d1108adfcacc",
-    "url": "/static/js/main.b6bf7782.chunk.js"
+    "revision": "bafb12c061631fb0d375",
+    "url": "/static/js/main.c3b95829.chunk.js"
   },
   {
     "revision": "42ac5946195a7306e2a5",
@@ -32,7 +32,7 @@ self.__precacheManifest = [
     "url": "/static/media/worktime-pred.3d98725a.png"
   },
   {
-    "revision": "ef45382183f12da498b74cb4c7dc3a8e",
+    "revision": "41fd57828cda8dfab4d54646c4318a37",
     "url": "/index.html"
   }
 ];
