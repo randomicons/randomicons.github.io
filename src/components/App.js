@@ -77,7 +77,7 @@ class App extends Component {
       document.getElementById('contact').scrollIntoView({behavior: "smooth"})
   }
   toResume = () => {
-    window.location = 'https://docs.google.com/document/d/1LmQIE1kGwN_K5hh8aJbSTbbrUpppgVB156wl7xRTiQ4/edit?usp=sharing'
+    window.location = '/resume_fs.pdf'
   }
 
   render() {
@@ -103,9 +103,9 @@ class App extends Component {
       <section style={{background: "#f9f9f9"}}>
         {/*<p>A bird in the hand is worth 2 in the bush</p>*/}
         <h1>Sriram Bhat</h1>
+        <p style={{textAlign: "center"}}>I'm a developer. I know data science. What more could you ask for.<br/>Look at
+          some of my projects.</p>
       </section>,
-      <p style={{textAlign: "center"}}>I develop. I know data science. What more could you ask for.<br/>Look at some of
-        my projects.</p>,
       <div className={styles.line}></div>
     ]
     const homeAnim =
