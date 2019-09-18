@@ -103,7 +103,7 @@ class App extends Component {
       <section style={{background: "#f9f9f9"}}>
         {/*<p>A bird in the hand is worth 2 in the bush</p>*/}
         <h1>Sriram Bhat</h1>
-        <p style={{textAlign: "center"}}>I'm a developer. I know data science. What more could you ask for.<br/>Look at
+        <p style={{textAlign: "center"}}>I'm a developer. I know data science.<br/>Look at
           some of my projects.</p>
       </section>,
       <div className={styles.line}></div>
